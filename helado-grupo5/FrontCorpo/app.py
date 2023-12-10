@@ -48,7 +48,7 @@ class Catalogo:
 
         # Una vez que la base de datos está establecida, creamos la tabla si no existe
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS productos (
-            codigo INT,
+            codigo INT PRIMARY KEY,
             apellido VARCHAR(255) NOT NULL,
             nombre VARCHAR(255) NOT NULL,
             correo VARCHAR(255) NOT NULL,
@@ -85,12 +85,15 @@ class Catalogo:
         return self.cursor.fetchone()
 
     #----------------------------------------------------------------
-    def modificar_producto(self, codigo, nuevo_apellido, nuevo_nombre, nuevo_correo, nuevo_telefono, nueva_edad, nuevo_cv):
-        sql = "UPDATE productos SET apellido = %s, nombre = %s, correo = %s, telefono = %s, comentario = %s, edad = %s, cv = %s, WHERE codigo = %s"
-        valores = (nuevo_apellido, nuevo_nombre, nuevo_correo, nuevo_telefono, nueva_edad, nuevo_cv, codigo)
+    def modificar_producto(self, codigo, nuevo_apellido, nuevo_nombre, nuevo_correo, nuevo_telefono, nueva_edad, nuevo_comentario, nuevo_cv):
+        sql = "UPDATE productos SET apellido = %s, nombre = %s, correo = %s, telefono = %s, comentario = %s, edad = %s, cv = %s WHERE codigo = %s"
+        valores = (nuevo_apellido, nuevo_nombre, nuevo_correo, nuevo_telefono, nuevo_comentario, nueva_edad, nuevo_cv, codigo)
         self.cursor.execute(sql, valores)
         self.conn.commit()
         return self.cursor.rowcount > 0
+
+
+
 
     #----------------------------------------------------------------
     def listar_productos(self):
@@ -177,18 +180,20 @@ def agregar_producto():
 #--------------------------------------------------------------------
 @app.route("/productos/<int:codigo>", methods=["PUT"])
 def modificar_producto(codigo):
-    #Recojo los datos del form
+    # Recojo los datos del formulario
     nuevo_apellido = request.form.get("apellido")
     nuevo_nombre = request.form.get("nombre")
-    nuevo_correo= request.form.get("correo")
+    nuevo_correo = request.form.get("correo")
     nuevo_telefono = request.form.get("telefono")
     nueva_edad = request.form.get("edad")
     nuevo_cv = request.form.get("cv")
-    
-    if catalogo.modificar_producto(codigo, nuevo_apellido, nuevo_nombre, nuevo_correo, nuevo_telefono, nueva_edad, nuevo_cv):
+    nuevo_comentario = request.form.get("comentario")  # Nuevo campo comentario
+
+    if catalogo.modificar_producto(codigo, nuevo_apellido, nuevo_nombre, nuevo_correo, nuevo_telefono, nueva_edad, nuevo_comentario, nuevo_cv):
         return jsonify({"mensaje": "Producto modificado"}), 200
     else:
         return jsonify({"mensaje": "Producto no encontrado"}), 403
+
 
 
 #--------------------------------------------------------------------
