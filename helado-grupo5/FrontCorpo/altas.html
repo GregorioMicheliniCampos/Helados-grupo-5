@@ -3,15 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar producto</title>
     <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/sabores.css">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Alta de Postuantes</title>
 </head>
 
 <body>
-    <h1>Agregar Productos al Inventario</h1>
-    <h3>Codo a Codo 2023</h3>
+    <h1>Alta de Postulante</h1>
+    <div class="logo_corpo">
+        <a href="../index.html">
+            <img src="../img/logo grupo 5.png">   
+        </a>
+    </div>
 
     <!--enctype="multipart/form-data es necesario para enviar archivos al back.-->
     <form id="formulario" enctype="multipart/form-data>
@@ -40,7 +48,7 @@
         <label for="cv">CV:</label>
         <input type="text" id="cv" name="cv">
         
-        <button type="submit">Agregar Producto</button>
+        <button type="submit">Agregar Postulante</button>
         <a href="index.html">Menu principal</a>
     </form>
 
@@ -71,7 +79,7 @@
                 if (response.ok) { return response.json(); }
             })
             .then(function (data) {
-                alert('Producto agregado correctamente.');
+                alert('Postulante agregado correctamente.');
                 // Limpiar el formulario para el proximo producto
                 document.getElementById('codigo').value = "";
                 document.getElementById('apellido').value = "";
@@ -84,7 +92,7 @@
             })
             .catch(function (error) {
                 // Mostramos el error, y no limpiamos el form.
-                alert('Error al agregar el producto.');
+                alert('Error al agregar el Postulante.');
             });
             
         })
