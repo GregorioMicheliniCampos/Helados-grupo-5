@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <h1>Listado de Postulantes</h1>
+    <h1 class="titulo_modificacion_usuarios">Listado de Postulantes</h1>
     <br>
     <br>
     <div class="logo_corpo">
@@ -22,17 +22,17 @@
             <img src="../img/logo grupo 5.png">   
         </a>
     </div>
-    <table>
+    <table class="tabladelistado">
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Apellido</th>
-                <th>Nombre</th>                
-                <th>Correo</th>
-                <th>Telefono</th>
-                <th>Comentario</th>
-                <th>Edad</th>
-                <th>CV</th>
+                <th align="center">Código</th>
+                <th align="center">Apellido</th>
+                <th align="center">Nombre</th>                
+                <th align="center">Correo</th>
+                <th align="center">Telefono</th>
+                <th align="center">Comentario</th>
+                <th align="center">Edad</th>
+                <th align="center">CV</th>
             </tr>
         </thead>
         <tbody id="tablaProductos"> </tbody>
@@ -42,7 +42,7 @@
         <a href="index.html">Menu principal</a>
     </div>
 
-    <script>    
+    <script class="tabladelistado">    
         //const URL = "http://127.0.0.1:5000/"
         //const URL = "http://gregoriomichelini.pythonanywhere.com/"
         const URL="http://127.0.0.1:5000/"
@@ -57,14 +57,14 @@
                 // Iteramos sobre los productos y agregamos filas a la tabla
                 for (let producto of data) {
                     let fila = document.createElement('tr');
-                    fila.innerHTML = '<td>' + producto.codigo + '</td>' +
-                        '<td>' + producto.apellido + '</td>' +
-                        '<td align="right">' + producto.nombre + '</td>' +
-                        '<td align="right">' + producto.correo + '</td>' +
-                        '<td align="right">' + producto.telefono + '</td>' +
-                        '<td align="right">' + producto.comentario + '</td>' +
-                        '<td align="right">' + producto.edad + '</td>' +
-                        '<td align="right">' + producto.cv + '</td>';
+                    fila.innerHTML = '<td align="center">' + producto.codigo + '</td>' +
+                        '<td align="center">' + producto.apellido + '</td>' +
+                        '<td align="center">' + producto.nombre + '</td>' +
+                        '<td align="center">' + producto.correo + '</td>' +
+                        '<td align="center">' + producto.telefono + '</td>' +
+                        '<td align="center">' + producto.comentario + '</td>' +
+                        '<td align="center">' + producto.edad + '</td>' +
+                        '<td align="center">' + producto.cv + '</td>';
                     tablaProductos.appendChild(fila);
                 }
             })
