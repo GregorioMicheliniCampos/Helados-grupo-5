@@ -2,7 +2,7 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	comentario: /^[a-zA-ZA-y\s]{1,40}$/,  
+	comentario: /.*/,  
 	apellido: /^[a-zA-ZA-y\s]{1,40}$/, 
 	nombre: /^[a-zA-ZA-y\s]{1,40}$/, 
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
